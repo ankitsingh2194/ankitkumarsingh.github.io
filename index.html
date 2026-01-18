@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Kumar Singh - Finance & Analytics Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #FFC107 0%, #FF5722 25%, #E91E63 50%, #9C27B0 75%, #2196F3 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FFC107, #FF5722, #E91E63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: transparent;
+            color: white;
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.2s ease;
+            font-weight: 900;
+            text-shadow: 3px 3px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #ffd700, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200%;
+            animation: shine 3s linear infinite, fadeInDown 1.2s ease;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0%; }
+            100% { background-position: 200%; }
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+            font-weight: 600;
+            animation: fadeInDown 1.4s ease;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            line-height: 1.9;
+            animation: fadeInUp 1.6s ease;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            animation: fadeInUp 1.8s ease;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            margin-bottom: 3rem;
+            padding: 3.5rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            animation: fadeInUp 0.8s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, #667eea, #764ba2, #ffd700);
+            border-image-slice: 1;
+            display: inline-block;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, #667eea);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.8rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-item:hover::before {
+            left: 100%;
+        }
+
+        .skill-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border-left-color: #ffd700;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea, #764ba2, #ffd700);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #ffd700);
+            border: 4px solid white;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .timeline-item:hover::before {
+            transform: scale(1.5);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-item h3 {
+            color: #667eea;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .timeline-item .period {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .score {
+            color: #764ba2;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #ffd700);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .cert-card:hover::before {
+            opacity: 1;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+        }
+
+        .cert-card h3 {
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .cert-card p {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 6px solid #ffd700;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: right 0.6s ease;
+        }
+
+        .project-card:hover::after {
+            right: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            border-left-color: #667eea;
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .awards-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .award-item {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffef9 100%);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 20px;
+            border-left: 6px solid #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .award-item:hover {
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4);
+            border-left-width: 10px;
+        }
+
+        .award-icon {
+            font-size: 3rem;
+            filter: drop-shadow(0 5px 10px rgba(255, 215, 0, 0.5));
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .award-item strong {
+            color: #764ba2;
+            font-size: 1.3rem;
+        }
+
+        .internship-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .internship-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .internship-card h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .internship-card .company {
+            color: #764ba2;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .responsibilities {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .responsibilities li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .responsibilities li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .responsibilities li:hover {
+            padding-left: 2.5rem;
+            color: #667eea;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">AKS</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#awards">Awards</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Ankit Kumar Singh</h1>
+        <p class="subtitle">PGDM in Finance and Business Analytics</p>
+        <p>Finance professional with expertise in banking risk management, data analytics, and financial modeling. Skilled in credit, market, liquidity, and operational risk assessment with proficiency in Excel, Power BI, Tableau, and financial analysis tools. Passionate about leveraging data-driven insights to support strategic business decisions.</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <span>ankit.singh.2024@absedu.in</span>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <span>+91 99101 62581</span>
+            </div>
+            <div class="contact-item">
+                <span>📍</span>
+                <span>Faridabad, Haryana, India</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <p>I am a PGDM Finance student with strong knowledge of banking risk management, including credit, market, liquidity, and operational risk. Familiar with Basel guidelines, treasury and credit products, and risk assessment frameworks. My expertise spans data analysis, risk reporting, and stakeholder communication, with proficiency in advanced analytics tools.</p>
+            <p style="margin-top: 1rem;">I am detail-oriented, analytical, and capable of supporting effective risk control and mitigation initiatives. Currently seeking opportunities in Risk Analysis, Financial Analysis, Business Analysis, and Data Analytics roles where I can contribute to data-driven decision-making and strategic planning.</p>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💼 Financial & Analytical Skills</h3>
+                    <div class="skill-item">Vouching (Auditing)</div>
+                    <div class="skill-item">Financial Reconciliation</div>
+                    <div class="skill-item">Financial Reports</div>
+                    <div class="skill-item">Receipt Matching</div>
+                    <div class="skill-item">Risk Management</div>
+                    <div class="skill-item">Financial Modeling</div>
+                    <div class="skill-item">Valuation</div>
+                </div>
+                <div class="skill-category">
+                    <h3>💻 Technical Tools</h3>
+                    <div class="skill-item">Advanced Excel</div>
+                    <div class="skill-item">Excel 365</div>
+                    <div class="skill-item">Power BI</div>
+                    <div class="skill-item">Tableau</div>
+                    <div class="skill-item">Tally ERP</div>
+                    <div class="skill-item">R Programming</div>
+                    <div class="skill-item">MS Office Suite</div>
+                </div>
+                <div class="skill-category">
+                    <h3>🎯 Soft Skills</h3>
+                    <div class="skill-item">Leadership</div>
+                    <div class="skill-item">Creativity</div>
+                    <div class="skill-item">Teamwork</div>
+                    <div class="skill-item">Project Management</div>
+                    <div class="skill-item">Communication</div>
+                    <div class="skill-item">Analytical Thinking</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>🎓 PGDM - Finance and Business Analytics</h3>
+                    <p class="period">Asian Business School, Noida, India | 2024 - Present</p>
+                    <p class="score">GPA: 7.5 (Semesters 1 & 2)</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>🎓 B.Com. (Honours)</h3>
+                    <p class="period">DAV Centenary College, Faridabad, India | 2021 - 2024</p>
+                    <p class="score">Percentage: 67.79%</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>📚 12th Standard</h3>
+                    <p class="period">Vidya Mandir Public School, Faridabad, India | 2020 - 2021</p>
+                    <p class="score">Percentage: 80%</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>📚 10th Standard</h3>
+                    <p class="period">A.D. Senior Secondary School, Faridabad, India | 2018 - 2019</p>
+                    <p class="score">Percentage: 79%</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <h2 class="section-title">Certifications & Training</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <h3>📊 Data Science using R</h3>
+                    <p>GT Learning</p>
+                </div>
+                <div class="cert-card">
+                    <h3>📈 Power BI and Tableau</h3>
+                    <p>GT Learning</p>
+                </div>
+                <div class="cert-card">
+                    <h3>💰 Financial Modeling and Valuation</h3>
+                    <p>GT Learning</p>
+                </div>
+                <div class="cert-card">
+                    <h3>📋 Project Management</h3>
+                    <p>LinkedIn Learning</p>
+                </div>
+                <div class="cert-card">
+                    <h3>📊 Microsoft Excel 365</h3>
+                    <p>Grant Thornton</p>
+                </div>
+                <div class="cert-card">
+                    <h3>📈 Advanced Excel</h3>
+                    <p>Internshala</p>
+                </div>
+                <div class="cert-card">
+                    <h3>💼 Tally ERP</h3>
+                    <p>Internshala</p>
+                </div>
+                <div class="cert-card">
+                    <h3>📊 Basics of Stock Market</h3>
+                    <p>INDmoney</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects & Research</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <span class="project-badge">🔬 Research Paper</span>
+                    <h3>Dainty vs Traditional Jewelry: Market Trend Analysis</h3>
+                    <p>Conducted comprehensive research analyzing the shift in consumer preferences toward dainty jewelry over traditional ornate designs. The study explored market trends, consumer behavior patterns, and evolving fashion preferences in the jewelry industry. This research was presented at an international conference at GIBS and received the Best Research Paper Award.</p>
+                </div>
+                <div class="project-card">
+                    <span class="project-badge">🎬 Documentary</span>
+                    <h3>Sustainable Development Documentary</h3>
+                    <p>Created and produced a documentary focusing on sustainable development goals and their practical implementation. The project highlighted environmental challenges, innovative solutions, and the importance of sustainable practices in modern business. Won 1st position at DAV Centenary College, Faridabad for this documentary.</p>
+                </div>
+                <div class="project-card">
+                    <span class="project-badge">📊 Marketing Project</span>
+                    <h3>Marketing Lab Activity</h3>
+                    <p>Led a comprehensive marketing lab activity at Asian Business School, demonstrating practical application of marketing concepts and strategies. Achieved 1st position by showcasing innovative marketing solutions and analytical approaches to real-world business challenges.</p>
